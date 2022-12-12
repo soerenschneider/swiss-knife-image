@@ -52,7 +52,7 @@ jobs:
             type=ref,event=pr
 
       - name: Build and push container image
-        uses: docker/build-push-action@v3.1.1
+        uses: docker/build-push-action@v3.2.0
         with:
           context: .
           push: true
@@ -60,7 +60,7 @@ jobs:
           labels: ${{ steps.dockerhub.outputs.labels }}
           
       - name: Build and push container image
-        uses: docker/build-push-action@v3.1.1
+        uses: docker/build-push-action@v3.2.0
         with:
           context: .
           push: true
