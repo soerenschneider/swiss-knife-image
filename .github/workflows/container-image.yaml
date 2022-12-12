@@ -46,6 +46,7 @@ jobs:
             type=raw,value={{ branch}}-{{date 'YYYYMMDDHHmmss'}}
             type=ref,event=branch
             type=ref,event=pr
+            type=raw,value=latest,enable={{is_default_branch}}
 
 
       - name: Extract metadata for container
@@ -57,6 +58,7 @@ jobs:
             type=raw,value={{ branch}}-{{date 'YYYYMMDDHHmmss'}}
             type=ref,event=branch
             type=ref,event=pr
+            type=raw,value=latest,enable={{is_default_branch}}
 
       - name: Build and push container image
         uses: docker/build-push-action@v3.1.1
