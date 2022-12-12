@@ -31,7 +31,7 @@ jobs:
           password: ${{ secrets.GITHUB_TOKEN }}
 
       - name: Extract metadata for container
-        id: meta
+        id: gcr
         uses: docker/metadata-action@v4.0.1
         with:
           images: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}
@@ -39,10 +39,30 @@ jobs:
             type=raw,value={{ branch}}-{{date 'YYYYMMDDHHmmss'}}
             type=ref,event=branch
             type=ref,event=pr
+
+
+      - name: Extract metadata for container
+        id: dockerhub
+        uses: docker/metadata-action@v4.0.1
+        with:
+          images: ${{ env.REGISTRY }}/${{ env.IMAGE_NAME }}
+          tags: |
+            type=raw,value={{ branch}}-{{date 'YYYYMMDDHHmmss'}}
+            type=ref,event=branch
+            type=ref,event=pr
+
       - name: Build and push container image
         uses: docker/build-push-action@v3.1.1
         with:
           context: .
           push: true
-          tags: ${{ steps.meta.outputs.tags }}
-          labels: ${{ steps.meta.outputs.labels }}
+          tags: ${{ steps.dockerhub.outputs.tags }}
+          labels: ${{ steps.dockerhub.outputs.labels }}
+          
+      - name: Build and push container image
+        uses: docker/build-push-action@v3.1.1
+        with:
+          context: .
+          push: true
+          tags: ${{ steps.gcr.outputs.tags }}
+          labels: ${{ steps.gcr.outputs.labels }}
