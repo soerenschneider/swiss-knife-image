@@ -17,8 +17,6 @@ RUN apt update \
             jq \
             ldap-utils \
             less \
-            man-db \
-            manpages \
             mtr \
             net-tools \
             netcat \
