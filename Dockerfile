@@ -9,6 +9,7 @@ RUN apt update \
             curl \
             dnsutils \
             ethtool \
+            git \
             iperf \
             iperf3 \
             iproute2 \
