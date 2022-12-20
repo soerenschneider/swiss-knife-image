@@ -12,14 +12,13 @@ RUN apt update \
             iperf \
             iperf3 \
             iproute2 \
-            ipsec-tools \
             ipset \
             iputils-ping \
             jq \
             ldap-utils \
             less \
-            man \
-            manpages-posix \
+            man-db \
+            manpages \
             mtr \
             net-tools \
             netcat \
