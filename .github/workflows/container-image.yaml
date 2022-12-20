@@ -3,8 +3,10 @@
 name: Create and publish a container
 
 on:
+  schedule:
+    - cron: "0 12 * * 1"
   push:
-    branch:
+    branches:
       - main
   workflow_dispatch: {}
 
