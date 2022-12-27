@@ -1,4 +1,4 @@
-FROM debian:stable-20221205-slim
+FROM debian:stable-20221219-slim
 
 RUN apt update \
     && apt -y upgrade \
